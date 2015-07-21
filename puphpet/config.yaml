@@ -10,14 +10,17 @@ vagrantfile:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                vflnp_40gm3lntinwp:
+                vflnp_j2ehwm3zhpqe:
                     host: '7388'
                     guest: '22'
+                vflnp_7v0phieoa6wf:
+                    host: '4000'
+                    guest: '4000'
         post_up_message: ''
         provider:
             virtualbox:
                 modifyvm:
-                    natdnshostresolver1: on
+                    natdnshostresolver1: 'on'
                 showgui: '0'
             vmware:
                 numvcpus: 1
@@ -33,7 +36,7 @@ vagrantfile:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            vflsf_c761gi0ktzap:
+            vflsf_3ghcdif8zo9q:
                 source: 'D:\sites'
                 target: /var/www/sites.local
                 sync_type: default
@@ -74,9 +77,28 @@ users_groups:
     install: '1'
     groups: {  }
     users: {  }
+locale:
+    install: '1'
+    settings:
+        default_locale: ''
+        locales:
+            - 'en_GB.UTF-8 UTF-8'
+            - 'en_US.UTF-8 UTF-8'
 firewall:
     install: '1'
-    rules: {  }
+    rules:
+        fr_7onqn7kqdkb9:
+            port:
+                - '4000'
+            priority: '100'
+            proto: tcp
+            action: accept
+        fr_q900p1lj9uhb:
+            port:
+                - '4000'
+            priority: '100'
+            proto: udp
+            action: accept
 cron:
     install: '1'
     jobs: {  }
@@ -88,7 +110,7 @@ nginx:
         proxy_buffers: '4 256k'
     upstreams: {  }
     vhosts:
-        nxv_ej5f7mivpqlp:
+        nxv_4u7ihmr9yx7o:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -108,9 +130,9 @@ nginx:
             rewrite_to_https: '1'
             spdy: '1'
             locations:
-                nxvl_jjxwr2ck9y1s:
+                nxvl_0bx78gjahvt4:
                     location: /
-                    autoindex: off
+                    autoindex: 'off'
                     try_files:
                         - $uri
                         - $uri/
@@ -118,9 +140,9 @@ nginx:
                     fastcgi: ''
                     fastcgi_index: ''
                     fastcgi_split_path: ''
-                nxvl_agrdqevvaswo:
+                nxvl_dwtv0u9gegvh:
                     location: '~ \.php$'
-                    autoindex: off
+                    autoindex: 'off'
                     try_files:
                         - $uri
                         - $uri/
@@ -145,7 +167,7 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_klhmzw6clfkm:
+        av_63z1jczvjd4k:
             servername: sites.local
             serveraliases:
                 - sites.local
@@ -162,7 +184,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_w942fvrwraui:
+                avd_gh0t87cab2i7:
                     path: /var/www/sites.local
                     options:
                         - Indexes
@@ -174,7 +196,7 @@ apache:
                         - 'all granted'
                     custom_fragment: ''
                     files_match:
-                        avdfm_v4cke97zpsyx:
+                        avdfm_kcoj8roalb3m:
                             path: \.php$
                             sethandler: 'proxy:fcgi://127.0.0.1:9000'
                             custom_fragment: ''
@@ -193,14 +215,14 @@ php:
         pecl:
             - pecl_http
     ini:
-        display_errors: On
+        display_errors: 'On'
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
         date.timezone: UTC
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_1q7saji9dq0g:
+        phpfp_mo366kkh6ktg:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -262,7 +284,7 @@ hhvm:
         hhvm.log.use_log_file: '1'
         hhvm.log.file: /var/log/hhvm/error.log
     php_ini:
-        display_errors: On
+        display_errors: 'On'
         error_reporting: '-1'
         date.timezone: UTC
 mysql:
@@ -273,15 +295,36 @@ mysql:
         override_options: {  }
     adminer: 0
     users:
-        mysqlnu_2pzjabidgl2l:
+        mysqlnu_tqek1qv7finm:
             name: dbuser
             password: '123'
     databases:
-        mysqlnd_sxxjx13jbh26:
+        mysqlnd_6oiqki6wj7zk:
             name: dbname
             sql: ''
     grants:
-        mysqlng_yibfae3j82a1:
+        mysqlng_coz32xzgpz0n:
+            user: dbuser
+            table: '*.*'
+            privileges:
+                - ALL
+mariadb:
+    install: '0'
+    settings:
+        version: '10.0'
+        root_password: '123'
+        override_options: {  }
+    adminer: 0
+    users:
+        mariadbnu_wq1s7bzswfp6:
+            name: dbuser
+            password: '123'
+    databases:
+        mariadbnd_byyxb2w7fupm:
+            name: dbname
+            sql: ''
+    grants:
+        mariadbng_fiaprfrm2k0h:
             user: dbuser
             table: '*.*'
             privileges:
@@ -321,7 +364,7 @@ mailcatcher:
         http_ip: 0.0.0.0
         http_port: '1080'
         mailcatcher_path: /usr/local/rvm/wrappers/default
-        from_email_method: inline
+        from_email_method: headers
 beanstalkd:
     install: '0'
     settings:
