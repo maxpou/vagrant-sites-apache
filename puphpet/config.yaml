@@ -10,12 +10,18 @@ vagrantfile:
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                vflnp_j2ehwm3zhpqe:
+                vflnp_owvtmm9v7xy5:
                     host: '7388'
                     guest: '22'
-                vflnp_7v0phieoa6wf:
+                vflnp_wd4knie2a1n0:
                     host: '4000'
                     guest: '4000'
+                vflnp_ew33tmu3ytre:
+                    host: '8080'
+                    guest: '8080'
+                vflnp_6q4p2z1hfosd:
+                    host: '7673'
+                    guest: '22'
         post_up_message: ''
         provider:
             virtualbox:
@@ -36,7 +42,7 @@ vagrantfile:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            vflsf_3ghcdif8zo9q:
+            vflsf_pso586yndi05:
                 source: 'D:\sites'
                 target: /var/www/sites.local
                 sync_type: default
@@ -87,13 +93,13 @@ locale:
 firewall:
     install: '1'
     rules:
-        fr_7onqn7kqdkb9:
+        fr_3b5gqrn2lb2f:
             port:
                 - '4000'
             priority: '100'
             proto: tcp
             action: accept
-        fr_q900p1lj9uhb:
+        fr_xhiioek7w2bm:
             port:
                 - '4000'
             priority: '100'
@@ -110,7 +116,7 @@ nginx:
         proxy_buffers: '4 256k'
     upstreams: {  }
     vhosts:
-        nxv_4u7ihmr9yx7o:
+        nxv_5aifvqnypv2x:
             server_name: awesome.dev
             server_aliases:
                 - www.awesome.dev
@@ -130,7 +136,7 @@ nginx:
             rewrite_to_https: '1'
             spdy: '1'
             locations:
-                nxvl_0bx78gjahvt4:
+                nxvl_dobb0y2nkbdd:
                     location: /
                     autoindex: 'off'
                     try_files:
@@ -140,7 +146,7 @@ nginx:
                     fastcgi: ''
                     fastcgi_index: ''
                     fastcgi_split_path: ''
-                nxvl_dwtv0u9gegvh:
+                nxvl_rbicwufo8tx9:
                     location: '~ \.php$'
                     autoindex: 'off'
                     try_files:
@@ -167,7 +173,7 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_63z1jczvjd4k:
+        av_afzodruvvuap:
             servername: sites.local
             serveraliases:
                 - sites.local
@@ -184,7 +190,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_gh0t87cab2i7:
+                avd_ukx86umbe31c:
                     path: /var/www/sites.local
                     options:
                         - Indexes
@@ -196,7 +202,7 @@ apache:
                         - 'all granted'
                     custom_fragment: ''
                     files_match:
-                        avdfm_kcoj8roalb3m:
+                        avdfm_y459h1l5gqge:
                             path: \.php$
                             sethandler: 'proxy:fcgi://127.0.0.1:9000'
                             custom_fragment: ''
@@ -222,7 +228,7 @@ php:
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_mo366kkh6ktg:
+        phpfp_734ze6rgfno0:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -295,15 +301,15 @@ mysql:
         override_options: {  }
     adminer: 0
     users:
-        mysqlnu_tqek1qv7finm:
+        mysqlnu_x8i4mf88usxw:
             name: dbuser
             password: '123'
     databases:
-        mysqlnd_6oiqki6wj7zk:
+        mysqlnd_yg7uhtosxg9h:
             name: dbname
             sql: ''
     grants:
-        mysqlng_coz32xzgpz0n:
+        mysqlng_hzf06gw697w0:
             user: dbuser
             table: '*.*'
             privileges:
@@ -316,15 +322,15 @@ mariadb:
         override_options: {  }
     adminer: 0
     users:
-        mariadbnu_wq1s7bzswfp6:
+        mariadbnu_p8f2jsciv3hm:
             name: dbuser
             password: '123'
     databases:
-        mariadbnd_byyxb2w7fupm:
+        mariadbnd_gxcolwvhfeds:
             name: dbname
             sql: ''
     grants:
-        mariadbng_fiaprfrm2k0h:
+        mariadbng_ejuk7tt4sbr4:
             user: dbuser
             table: '*.*'
             privileges:
