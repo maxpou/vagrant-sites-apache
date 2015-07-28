@@ -2,10 +2,9 @@
 
 ## Quick tour
 * Provider : Virtualbox
-* URL sites.local
-
+* URL : sites.local
 * OS : Debian 7 Wheezy x64
-* Webserver : Apache 
+* Webserver : Apache
 * Database : MySQL
 * Languages : PHP (5.6)/NodeJS/Ruby (1.9.3)
 * Ports :
