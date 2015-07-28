@@ -3,6 +3,7 @@
 ## Quick tour
 * Provider : Virtualbox
 * URL : sites.local
+* Source folder : D:\sites
 * OS : Debian 7 Wheezy x64
 * Webserver : Apache
 * Database : MySQL
